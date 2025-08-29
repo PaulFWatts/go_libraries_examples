@@ -91,7 +91,7 @@ func Fibonacci(n int) (int, error) {
 	if n <= 1 {
 		return n, nil
 	}
-	
+
 	a, b := 0, 1
 	for i := 2; i <= n; i++ {
 		a, b = b, a+b
@@ -135,10 +135,10 @@ func (sp *StringProcessor) WordCount(s string) int {
 	if len(s) == 0 {
 		return 0
 	}
-	
+
 	count := 0
 	inWord := false
-	
+
 	for _, r := range s {
 		if r == ' ' || r == '\t' || r == '\n' {
 			inWord = false
@@ -192,14 +192,14 @@ func (us *UserService) AddUser(user User) error {
 	if user.Email == "" {
 		return errors.New("email cannot be empty")
 	}
-	
+
 	// Check for duplicate ID
 	for _, existingUser := range us.users {
 		if existingUser.ID == user.ID {
 			return errors.New("user with this ID already exists")
 		}
 	}
-	
+
 	us.users = append(us.users, user)
 	return nil
 }
@@ -240,7 +240,7 @@ func (us *UserService) GetUserCount() int {
 // ValidateUser validates user data
 func (us *UserService) ValidateUser(user User) []string {
 	var errors []string
-	
+
 	if user.Name == "" {
 		errors = append(errors, "name cannot be empty")
 	}
@@ -256,6 +256,6 @@ func (us *UserService) ValidateUser(user User) []string {
 	if user.Age > 150 {
 		errors = append(errors, "age cannot be greater than 150")
 	}
-	
+
 	return errors
 }

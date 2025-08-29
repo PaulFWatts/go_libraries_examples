@@ -59,7 +59,7 @@ func TestCalculatorAdvancedOperations(t *testing.T) {
 		result, err := calc.Sqrt(16)
 		assert.NoError(t, err)
 		assert.Equal(t, 4.0, result)
-		
+
 		// Test negative number
 		result, err = calc.Sqrt(-4)
 		assert.Error(t, err)
@@ -71,10 +71,10 @@ func TestCalculatorAdvancedOperations(t *testing.T) {
 	t.Run("Power", func(t *testing.T) {
 		result := calc.Power(2, 3)
 		assert.Equal(t, 8.0, result)
-		
+
 		result = calc.Power(5, 0)
 		assert.Equal(t, 1.0, result)
-		
+
 		result = calc.Power(10, 2)
 		assert.Equal(t, 100.0, result)
 	})
@@ -135,7 +135,7 @@ func TestFibonacci(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result, err := Fibonacci(tt.input)
-			
+
 			if tt.hasError {
 				assert.Error(t, err)
 				assert.Equal(t, 0, result)
@@ -286,10 +286,10 @@ func TestUserService(t *testing.T) {
 		// Invalid user - multiple errors
 		invalidUser := User{
 			ID:       2,
-			Name:     "",     // Empty name
-			Email:    "",     // Empty email
-			Username: "",     // Empty username
-			Age:      -5,     // Negative age
+			Name:     "", // Empty name
+			Email:    "", // Empty email
+			Username: "", // Empty username
+			Age:      -5, // Negative age
 		}
 		errors = userService.ValidateUser(invalidUser)
 		assert.NotEmpty(t, errors)
@@ -328,7 +328,7 @@ func BenchmarkFibonacci(b *testing.B) {
 func BenchmarkStringReverse(b *testing.B) {
 	sp := NewStringProcessor()
 	testString := "This is a test string for benchmarking"
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		sp.Reverse(testString)
@@ -352,7 +352,7 @@ func TestAssertionStyles(t *testing.T) {
 		// Nil checks
 		var ptr *int
 		assert.Nil(t, ptr)
-		
+
 		value := 42
 		ptr = &value
 		assert.NotNil(t, ptr)
@@ -360,28 +360,28 @@ func TestAssertionStyles(t *testing.T) {
 
 	t.Run("StringAssertions", func(t *testing.T) {
 		text := "Hello, World!"
-		
+
 		assert.Contains(t, text, "World")
 		assert.NotContains(t, text, "Go")
-		
+
 		assert.True(t, strings.HasPrefix(text, "Hello"))
 		assert.True(t, strings.HasSuffix(text, "World!"))
-		
+
 		assert.Regexp(t, `^Hello.*!$`, text)
 	})
 
 	t.Run("CollectionAssertions", func(t *testing.T) {
 		numbers := []int{1, 2, 3, 4, 5}
-		
+
 		assert.Len(t, numbers, 5)
 		assert.NotEmpty(t, numbers)
 		assert.Contains(t, numbers, 3)
 		assert.NotContains(t, numbers, 10)
-		
+
 		// Element-wise comparison
 		expected := []int{1, 2, 3, 4, 5}
 		assert.ElementsMatch(t, expected, numbers)
-		
+
 		// Subset checking
 		subset := []int{2, 4}
 		assert.Subset(t, numbers, subset)
@@ -389,7 +389,7 @@ func TestAssertionStyles(t *testing.T) {
 
 	t.Run("TypeAssertions", func(t *testing.T) {
 		var value interface{} = "hello"
-		
+
 		assert.IsType(t, "", value)
 		assert.Implements(t, (*error)(nil), &CustomError{})
 	})
@@ -398,7 +398,7 @@ func TestAssertionStyles(t *testing.T) {
 		assert.Panics(t, func() {
 			panic("test panic")
 		})
-		
+
 		assert.NotPanics(t, func() {
 			// This should not panic
 			_ = 1 + 1
@@ -419,11 +419,11 @@ func (e *CustomError) Error() string {
 func TestRequireVsAssert(t *testing.T) {
 	t.Run("RequireStopsOnFailure", func(t *testing.T) {
 		data := []int{1, 2, 3}
-		
+
 		// If this fails, the test stops here
 		require.NotEmpty(t, data)
 		require.Len(t, data, 3)
-		
+
 		// These will only run if the requires above pass
 		assert.Equal(t, 1, data[0])
 		assert.Equal(t, 2, data[1])

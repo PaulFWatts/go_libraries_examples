@@ -28,7 +28,7 @@ func (ns *NotificationService) NotifyUser(email, message string) error {
 	if !ns.emailService.ValidateEmail(email) {
 		return errors.New("invalid email address")
 	}
-	
+
 	return ns.emailService.SendEmail(email, "Notification", message)
 }
 
@@ -36,10 +36,10 @@ func (ns *NotificationService) SendWelcomeEmail(user User) error {
 	if !ns.emailService.ValidateEmail(user.Email) {
 		return errors.New("invalid email address")
 	}
-	
+
 	subject := "Welcome!"
 	body := "Welcome to our service, " + user.Name + "!"
-	
+
 	return ns.emailService.SendEmail(user.Email, subject, body)
 }
 
@@ -63,110 +63,110 @@ func TestNotificationService(t *testing.T) {
 	t.Run("NotifyUser_Success", func(t *testing.T) {
 		// Create mock
 		mockEmailService := new(MockEmailService)
-		
+
 		// Set expectations
 		mockEmailService.On("ValidateEmail", "test@example.com").Return(true)
 		mockEmailService.On("SendEmail", "test@example.com", "Notification", "Hello!").Return(nil)
-		
+
 		// Create service with mock
 		notificationService := NewNotificationService(mockEmailService)
-		
+
 		// Test the method
 		err := notificationService.NotifyUser("test@example.com", "Hello!")
-		
+
 		// Assertions
 		assert.NoError(t, err)
-		
+
 		// Verify all expectations were met
 		mockEmailService.AssertExpectations(t)
 	})
 
 	t.Run("NotifyUser_InvalidEmail", func(t *testing.T) {
 		mockEmailService := new(MockEmailService)
-		
+
 		// Set expectations - invalid email
 		mockEmailService.On("ValidateEmail", "invalid-email").Return(false)
-		
+
 		notificationService := NewNotificationService(mockEmailService)
-		
+
 		err := notificationService.NotifyUser("invalid-email", "Hello!")
-		
+
 		assert.Error(t, err)
 		assert.Contains(t, err.Error(), "invalid email address")
-		
+
 		// Verify ValidateEmail was called, but SendEmail was not
 		mockEmailService.AssertExpectations(t)
 	})
 
 	t.Run("NotifyUser_SendEmailFails", func(t *testing.T) {
 		mockEmailService := new(MockEmailService)
-		
+
 		// Set expectations - email sending fails
 		mockEmailService.On("ValidateEmail", "test@example.com").Return(true)
 		mockEmailService.On("SendEmail", "test@example.com", "Notification", "Hello!").
 			Return(errors.New("SMTP error"))
-		
+
 		notificationService := NewNotificationService(mockEmailService)
-		
+
 		err := notificationService.NotifyUser("test@example.com", "Hello!")
-		
+
 		assert.Error(t, err)
 		assert.Contains(t, err.Error(), "SMTP error")
-		
+
 		mockEmailService.AssertExpectations(t)
 	})
 
 	t.Run("SendWelcomeEmail_Success", func(t *testing.T) {
 		mockEmailService := new(MockEmailService)
-		
+
 		user := User{
 			ID:    1,
 			Name:  "John Doe",
 			Email: "john@example.com",
 		}
-		
+
 		// Set expectations
 		mockEmailService.On("ValidateEmail", user.Email).Return(true)
-		mockEmailService.On("SendEmail", user.Email, "Welcome!", 
+		mockEmailService.On("SendEmail", user.Email, "Welcome!",
 			"Welcome to our service, John Doe!").Return(nil)
-		
+
 		notificationService := NewNotificationService(mockEmailService)
-		
+
 		err := notificationService.SendWelcomeEmail(user)
-		
+
 		assert.NoError(t, err)
 		mockEmailService.AssertExpectations(t)
 	})
 
 	t.Run("MockWithAnyArgs", func(t *testing.T) {
 		mockEmailService := new(MockEmailService)
-		
+
 		// Using mock.Anything for flexible matching
 		mockEmailService.On("ValidateEmail", mock.Anything).Return(true)
-		mockEmailService.On("SendEmail", mock.AnythingOfType("string"), 
+		mockEmailService.On("SendEmail", mock.AnythingOfType("string"),
 			mock.AnythingOfType("string"), mock.AnythingOfType("string")).Return(nil)
-		
+
 		notificationService := NewNotificationService(mockEmailService)
-		
+
 		err := notificationService.NotifyUser("any@example.com", "Any message")
-		
+
 		assert.NoError(t, err)
 		mockEmailService.AssertExpectations(t)
 	})
 
 	t.Run("MockWithReturnValues", func(t *testing.T) {
 		mockEmailService := new(MockEmailService)
-		
+
 		// Different return values for different inputs
 		mockEmailService.On("ValidateEmail", "valid@example.com").Return(true)
 		mockEmailService.On("ValidateEmail", "invalid@example.com").Return(false)
-		
+
 		// Test valid email
 		assert.True(t, mockEmailService.ValidateEmail("valid@example.com"))
-		
+
 		// Test invalid email
 		assert.False(t, mockEmailService.ValidateEmail("invalid@example.com"))
-		
+
 		mockEmailService.AssertExpectations(t)
 	})
 }
@@ -231,12 +231,12 @@ func TestUserRepository(t *testing.T) {
 	t.Run("FindUser_Success", func(t *testing.T) {
 		mockDB := new(MockDatabase)
 		expectedUser := &User{ID: 1, Name: "John Doe", Email: "john@example.com"}
-		
+
 		mockDB.On("GetUser", 1).Return(expectedUser, nil)
-		
+
 		repo := NewUserRepository(mockDB)
 		user, err := repo.FindUser(1)
-		
+
 		assert.NoError(t, err)
 		assert.Equal(t, expectedUser, user)
 		mockDB.AssertExpectations(t)
@@ -244,12 +244,12 @@ func TestUserRepository(t *testing.T) {
 
 	t.Run("FindUser_NotFound", func(t *testing.T) {
 		mockDB := new(MockDatabase)
-		
+
 		mockDB.On("GetUser", 999).Return((*User)(nil), errors.New("user not found"))
-		
+
 		repo := NewUserRepository(mockDB)
 		user, err := repo.FindUser(999)
-		
+
 		assert.Error(t, err)
 		assert.Nil(t, user)
 		assert.Contains(t, err.Error(), "user not found")
@@ -259,12 +259,12 @@ func TestUserRepository(t *testing.T) {
 	t.Run("CreateUser_Success", func(t *testing.T) {
 		mockDB := new(MockDatabase)
 		newUser := &User{Name: "Jane Doe", Email: "jane@example.com"}
-		
+
 		mockDB.On("SaveUser", newUser).Return(nil)
-		
+
 		repo := NewUserRepository(mockDB)
 		err := repo.CreateUser(newUser)
-		
+
 		assert.NoError(t, err)
 		mockDB.AssertExpectations(t)
 	})
@@ -272,14 +272,14 @@ func TestUserRepository(t *testing.T) {
 	t.Run("CreateUser_InvalidData", func(t *testing.T) {
 		mockDB := new(MockDatabase)
 		invalidUser := &User{Name: "", Email: "test@example.com"}
-		
+
 		// Note: SaveUser should not be called for invalid data
 		repo := NewUserRepository(mockDB)
 		err := repo.CreateUser(invalidUser)
-		
+
 		assert.Error(t, err)
 		assert.Contains(t, err.Error(), "name is required")
-		
+
 		// Verify SaveUser was never called
 		mockDB.AssertNotCalled(t, "SaveUser")
 	})
@@ -287,28 +287,28 @@ func TestUserRepository(t *testing.T) {
 	t.Run("RemoveUser_Success", func(t *testing.T) {
 		mockDB := new(MockDatabase)
 		existingUser := &User{ID: 1, Name: "John Doe"}
-		
+
 		mockDB.On("GetUser", 1).Return(existingUser, nil)
 		mockDB.On("DeleteUser", 1).Return(nil)
-		
+
 		repo := NewUserRepository(mockDB)
 		err := repo.RemoveUser(1)
-		
+
 		assert.NoError(t, err)
 		mockDB.AssertExpectations(t)
 	})
 
 	t.Run("RemoveUser_NotFound", func(t *testing.T) {
 		mockDB := new(MockDatabase)
-		
+
 		mockDB.On("GetUser", 999).Return((*User)(nil), errors.New("user not found"))
-		
+
 		repo := NewUserRepository(mockDB)
 		err := repo.RemoveUser(999)
-		
+
 		assert.Error(t, err)
 		assert.Contains(t, err.Error(), "user not found")
-		
+
 		// Verify DeleteUser was never called
 		mockDB.AssertNotCalled(t, "DeleteUser")
 		mockDB.AssertExpectations(t)
@@ -363,11 +363,11 @@ func (suite *CalculatorTestSuite) TestDivideByZero() {
 func (suite *CalculatorTestSuite) TestMemoryOperations() {
 	// Test initial memory
 	suite.Equal(0.0, suite.calculator.GetMemory())
-	
+
 	// Perform operation
 	suite.calculator.Multiply(4, 5)
 	suite.Equal(20.0, suite.calculator.GetMemory())
-	
+
 	// Clear memory
 	suite.calculator.ClearMemory()
 	suite.Equal(0.0, suite.calculator.GetMemory())
@@ -390,14 +390,14 @@ func (suite *StringProcessorTestSuite) SetupTest() {
 
 func (suite *StringProcessorTestSuite) TestReverse() {
 	testCases := map[string]string{
-		"hello":     "olleh",
-		"world":     "dlrow",
-		"testify":   "yfitset",
-		"":          "",
-		"a":         "a",
-		"racecar":   "racecar",
+		"hello":   "olleh",
+		"world":   "dlrow",
+		"testify": "yfitset",
+		"":        "",
+		"a":       "a",
+		"racecar": "racecar",
 	}
-	
+
 	for input, expected := range testCases {
 		result := suite.processor.Reverse(input)
 		suite.Equal(expected, result, "Failed for input: %s", input)
@@ -413,18 +413,18 @@ func (suite *StringProcessorTestSuite) TestIsPalindrome() {
 		"a",
 		"Was it a car or a cat I saw",
 	}
-	
+
 	notPalindromes := []string{
 		"hello",
 		"world",
 		"testify",
 		"almost a palindrome",
 	}
-	
+
 	for _, p := range palindromes {
 		suite.True(suite.processor.IsPalindrome(p), "Should be palindrome: %s", p)
 	}
-	
+
 	for _, np := range notPalindromes {
 		suite.False(suite.processor.IsPalindrome(np), "Should not be palindrome: %s", np)
 	}
@@ -432,14 +432,14 @@ func (suite *StringProcessorTestSuite) TestIsPalindrome() {
 
 func (suite *StringProcessorTestSuite) TestWordCount() {
 	testCases := map[string]int{
-		"":                    0,
-		"hello":               1,
-		"hello world":         2,
-		"  hello   world  ":   2,
-		"one two three four":  4,
-		"\thello\nworld\t":    2,
+		"":                   0,
+		"hello":              1,
+		"hello world":        2,
+		"  hello   world  ":  2,
+		"one two three four": 4,
+		"\thello\nworld\t":   2,
 	}
-	
+
 	for input, expected := range testCases {
 		result := suite.processor.WordCount(input)
 		suite.Equal(expected, result, "Failed for input: '%s'", input)
