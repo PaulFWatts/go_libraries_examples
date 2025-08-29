@@ -1,27 +1,15 @@
 # Go Libraries Examples 🚀
 
-A comprehensive collection of working examples demonstrating the most popular and essential Go libraries. This repository serves as a practical reference for developers looking to implement common functiona1. **[hello](./hello/)** - Basic Go syntax and concepts
-2. **[greetings](./greetings/)** - Package creation and imports
-3. **[TimeDemo](./TimeDemo/)** - Standard library usage
-4. **[Testify](./Testify/)** - Testing and quality assurance
-5. **[GoDotEnv](./GoDotEnv/)** - Environment configuration basics
-6. **[Viper](./Viper/)** - Advanced configuration management
-7. **[JWT](./JWT/)** - Authentication and security
-8. **[MapStructure](./MapStructure/)** - Data handling
-9. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
-10. **[Templ](./Templ/)** - Type-safe HTML template development
-11. **[Echo](./Echo/)** - Minimalist web framework development
-12. **[Gorm](./Gorm/)** - Database operations
-13. **[Gin](./Gin/)** - Full-featured web development
-14. **[GoQuery](./GoQuery/)** - Web scraping
-15. **[Cobra](./Cobra/)** - CLI applicationsll-established Go packages.
+A comprehensive collection of working examples demonstrating the most popular and essential Go libraries. This repository serves as a practical reference for developers looking to implement common functionality using well-established Go packages.
 
 ## 📋 Table of Contents
 
 - [Libraries Included](#libraries-included)
+- [Featured Comprehensive Demonstrations](#featured-comprehensive-demonstrations)
 - [Getting Started](#getting-started)
 - [Repository Structure](#repository-structure)
 - [Usage](#usage)
+- [Learning Path](#learning-path)
 - [Contributing](#contributing)
 
 ## 🛠️ Libraries Included
@@ -276,19 +264,21 @@ go work sync
 
 **Recommended order for beginners:**
 
-1. **[hello](./hello/)** - Basic Go syntax
-2. **[greetings](./greetings/)** - Package creation
+1. **[hello](./hello/)** - Basic Go syntax and concepts
+2. **[greetings](./greetings/)** - Package creation and imports
 3. **[TimeDemo](./TimeDemo/)** - Standard library usage
 4. **[Testify](./Testify/)** - Testing and quality assurance
-5. **[GoDotEnv](./GoDotEnv/)** - Configuration management
-6. **[JWT](./JWT/)** - Authentication and security
-7. **[MapStructure](./MapStructure/)** - Data handling
-8. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
-9. **[Echo](./Echo/)** - Minimalist web framework development
-10. **[Gorm](./Gorm/)** - Database operations
-11. **[Gin](./Gin/)** - Full-featured web development
-12. **[GoQuery](./GoQuery/)** - Web scraping
-13. **[Cobra](./Cobra/)** - CLI applications
+5. **[GoDotEnv](./GoDotEnv/)** - Environment configuration basics
+6. **[Viper](./Viper/)** - Advanced configuration management
+7. **[JWT](./JWT/)** - Authentication and security
+8. **[MapStructure](./MapStructure/)** - Data handling
+9. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
+10. **[Templ](./Templ/)** - Type-safe HTML template development
+11. **[Echo](./Echo/)** - Minimalist web framework development
+12. **[Gorm](./Gorm/)** - Database operations
+13. **[Gin](./Gin/)** - Full-featured web development
+14. **[GoQuery](./GoQuery/)** - Web scraping
+15. **[Cobra](./Cobra/)** - CLI applications
 
 ## 🔧 Tools & Commands
 
