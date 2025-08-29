@@ -1,0 +1,19 @@
+# Ignore environment files with sensitive data
+.env
+
+# Ignore build artifacts
+*.exe
+godotenv-demo
+
+# Ignore Go build cache
+go.sum
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+tmp/

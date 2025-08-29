@@ -1,0 +1,13 @@
+go 1.25.0
+
+use (
+	./Gin
+	./greetings
+	./hello
+	./Cobra
+	./Gorm
+	./GoDotEnv
+	./GoQuery
+	./TimeDemo
+	./MapStructure
+)

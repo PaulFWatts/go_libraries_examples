@@ -1,0 +1,175 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+# go.work (uncomment if you want to exclude workspace files)
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+*.log
+
+# Database files (you may want to keep test.db for examples)
+# *.db
+# *.sqlite
+# *.sqlite3
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Build directories
+build/
+dist/
+bin/
+
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux specific
+*~
+
+# MacOS specific
+.AppleDouble
+.LSOverride
+._*
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Package files
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# Cache directories
+.cache/
+go-build/
+
+# Coverage reports
+coverage.txt
+coverage.html
+coverage.xml
+*.cover
+
+# Profiling data
+*.prof
+mem.prof
+cpu.prof
+
+# Local configuration files
+config.local.*
+settings.local.*
+
+# Docker
+.dockerignore
+Dockerfile.local
+
+# Air (Go live reload) temporary files
+tmp/
+.air/
+
+# Delve debugger
+__debug_bin*
+
+# Go module proxy cache
+$GOPROXY/
+
+# JetBrains IDEs
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Node.js (if using any JavaScript tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using any Python tools)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Project specific exclusions
+# Add any project-specific files or directories you want to ignore below

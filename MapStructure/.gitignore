@@ -1,0 +1,16 @@
+# Binaries
+*.exe
+mapstructure-demo
+
+# Go build artifacts
+go.sum
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
