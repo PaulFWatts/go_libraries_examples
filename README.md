@@ -50,6 +50,14 @@ A comprehensive collection of working examples demonstrating the most popular an
   - Refresh token patterns
   - Security best practices
 
+### Testing & Quality Assurance
+- **[Testify](./Testify/)** - Comprehensive testing framework
+  - Rich assertion library with over 60+ assertion methods
+  - Powerful mocking capabilities with expectations
+  - Test suites with setup and teardown methods
+  - Benchmarking and performance testing
+  - Real-world testing scenarios and best practices
+
 ### Data Processing
 - **[MapStructure](./MapStructure/)** - Map to struct conversion
   - JSON to struct mapping
@@ -117,6 +125,7 @@ go_libraries_examples/
 ├── HTTPRouter/                 # High-performance HTTP router
 ├── JWT/                        # JSON Web Token example
 ├── MapStructure/               # Data mapping example
+├── Testify/                    # Testing framework example
 ├── TimeDemo/                   # Time package demonstration
 ├── greetings/                  # Custom package example
 └── hello/                      # Basic Go example
@@ -158,6 +167,9 @@ cd GoQuery && go run main.go
 # Data mapping
 cd MapStructure && go run main.go
 
+# Testing framework (run tests)
+cd Testify && go test -v
+
 # Time operations
 cd TimeDemo && go run main.go
 ```
@@ -190,14 +202,15 @@ go work sync
 1. **[hello](./hello/)** - Basic Go syntax
 2. **[greetings](./greetings/)** - Package creation
 3. **[TimeDemo](./TimeDemo/)** - Standard library usage
-4. **[GoDotEnv](./GoDotEnv/)** - Configuration management
-5. **[JWT](./JWT/)** - Authentication and security
-6. **[MapStructure](./MapStructure/)** - Data handling
-7. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
-8. **[Gorm](./Gorm/)** - Database operations
-9. **[Gin](./Gin/)** - Web development
-10. **[GoQuery](./GoQuery/)** - Web scraping
-11. **[Cobra](./Cobra/)** - CLI applications
+4. **[Testify](./Testify/)** - Testing and quality assurance
+5. **[GoDotEnv](./GoDotEnv/)** - Configuration management
+6. **[JWT](./JWT/)** - Authentication and security
+7. **[MapStructure](./MapStructure/)** - Data handling
+8. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
+9. **[Gorm](./Gorm/)** - Database operations
+10. **[Gin](./Gin/)** - Web development
+11. **[GoQuery](./GoQuery/)** - Web scraping
+12. **[Cobra](./Cobra/)** - CLI applications
 
 ## 🔧 Tools & Commands
 
@@ -233,7 +246,6 @@ This project is intended for educational purposes. Please refer to individual li
 Future additions may include:
 - **Fiber** - Express-inspired web framework
 - **Echo** - Minimalist web framework
-- **Testify** - Testing toolkit
 - **Viper** - Configuration management
 - **Logrus** - Structured logging
 - **Redis-Go** - Redis client
