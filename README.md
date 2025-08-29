@@ -18,6 +18,12 @@ A comprehensive collection of working examples demonstrating the most popular an
   - JSON responses
   - Middleware support
 
+- **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP request router
+  - Zero-allocation routing
+  - Path parameters and wildcards
+  - RESTful API patterns
+  - Custom error handling
+
 - **[Cobra](./Cobra/)** - Powerful CLI application framework
   - Command-line interface creation
   - Command hierarchy and flags
@@ -108,6 +114,7 @@ go_libraries_examples/
 ├── GoDotEnv/                   # Environment variable management
 ├── GoQuery/                    # Web scraping example
 ├── Gorm/                       # ORM database example
+├── HTTPRouter/                 # High-performance HTTP router
 ├── JWT/                        # JSON Web Token example
 ├── MapStructure/               # Data mapping example
 ├── TimeDemo/                   # Time package demonstration
@@ -129,6 +136,9 @@ Each library example is self-contained and can be run independently:
 ```bash
 # Web server example
 cd Gin && go run main.go
+
+# High-performance HTTP router
+cd HTTPRouter && go run main.go
 
 # CLI tool example
 cd Cobra && go run main.go
@@ -183,10 +193,11 @@ go work sync
 4. **[GoDotEnv](./GoDotEnv/)** - Configuration management
 5. **[JWT](./JWT/)** - Authentication and security
 6. **[MapStructure](./MapStructure/)** - Data handling
-7. **[Gorm](./Gorm/)** - Database operations
-8. **[Gin](./Gin/)** - Web development
-9. **[GoQuery](./GoQuery/)** - Web scraping
-10. **[Cobra](./Cobra/)** - CLI applications
+7. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
+8. **[Gorm](./Gorm/)** - Database operations
+9. **[Gin](./Gin/)** - Web development
+10. **[GoQuery](./GoQuery/)** - Web scraping
+11. **[Cobra](./Cobra/)** - CLI applications
 
 ## 🔧 Tools & Commands
 

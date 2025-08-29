@@ -23,7 +23,7 @@ type CustomClaims struct {
 var (
 	// HMAC Secret key (in production, use environment variable)
 	hmacSecret = []byte("your-256-bit-secret")
-	
+
 	// RSA keys for RSA256 signing
 	privateKey *rsa.PrivateKey
 	publicKey  *rsa.PublicKey

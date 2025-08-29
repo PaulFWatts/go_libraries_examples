@@ -6,6 +6,7 @@ use (
 	./GoDotEnv
 	./GoQuery
 	./Gorm
+	./HTTPRouter
 	./JWT
 	./MapStructure
 	./TimeDemo
