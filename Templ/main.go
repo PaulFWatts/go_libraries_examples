@@ -8,8 +8,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gorilla/mux"
 	"templ-demo/templates"
+
+	"github.com/gorilla/mux"
 )
 
 // Use the same types as defined in templates
@@ -18,10 +19,10 @@ type User = templates.User
 
 // Global data stores (in a real app, you'd use a database)
 var (
-	todos   []Todo
-	users   []User
-	nextID  = 1
-	userID  = 1
+	todos  []Todo
+	users  []User
+	nextID = 1
+	userID = 1
 )
 
 func init() {
@@ -309,10 +310,10 @@ func loggingMiddleware(next http.Handler) http.Handler {
 		start := time.Now()
 		next.ServeHTTP(w, r)
 		duration := time.Since(start)
-		
-		fmt.Printf("📝 %s %s - %v\n", 
-			r.Method, 
-			r.URL.Path, 
+
+		fmt.Printf("📝 %s %s - %v\n",
+			r.Method,
+			r.URL.Path,
 			duration,
 		)
 	})
