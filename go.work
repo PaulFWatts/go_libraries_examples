@@ -12,6 +12,7 @@ use (
 	./MapStructure
 	./Testify
 	./TimeDemo
+	./Viper
 	./greetings
 	./hello
 )

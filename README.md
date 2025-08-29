@@ -43,6 +43,14 @@ A comprehensive collection of working examples demonstrating the most popular an
   - SQLite integration example
 
 ### Configuration & Environment
+- **[Viper](./Viper/)** - Complete configuration solution
+  - Multiple config file formats (YAML, JSON, TOML, HCL)
+  - Environment variable integration with custom prefixes
+  - Command-line flag binding via Cobra
+  - Live configuration watching and reloading
+  - Configuration precedence and validation
+  - Real-world enterprise configuration patterns
+
 - **[GoDotEnv](./GoDotEnv/)** - Environment variable management
   - `.env` file loading
   - Type conversion helpers
