@@ -485,9 +485,9 @@ func searchProducts(c echo.Context) error {
 
 	var results []Product
 	for _, product := range products {
-		if containsIgnoreCase(product.Name, query) || 
-		   containsIgnoreCase(product.Category, query) || 
-		   containsIgnoreCase(product.Description, query) {
+		if containsIgnoreCase(product.Name, query) ||
+			containsIgnoreCase(product.Category, query) ||
+			containsIgnoreCase(product.Description, query) {
 			results = append(results, product)
 		}
 	}
@@ -610,10 +610,10 @@ func cookieExampleHandler(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message":       "Cookie set and read",
-		"cookie_set":    "demo_cookie=echo_framework_demo",
-		"all_cookies":   cookieMap,
-		"cookie_count":  len(cookies),
+		"message":      "Cookie set and read",
+		"cookie_set":   "demo_cookie=echo_framework_demo",
+		"all_cookies":  cookieMap,
+		"cookie_count": len(cookies),
 	})
 }
 
