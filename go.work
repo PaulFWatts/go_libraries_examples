@@ -1,13 +1,14 @@
 go 1.25.0
 
 use (
-	./Gin
-	./greetings
-	./hello
 	./Cobra
-	./Gorm
+	./Gin
 	./GoDotEnv
 	./GoQuery
-	./TimeDemo
+	./Gorm
+	./JWT
 	./MapStructure
+	./TimeDemo
+	./greetings
+	./hello
 )

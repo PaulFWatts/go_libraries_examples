@@ -36,6 +36,14 @@ A comprehensive collection of working examples demonstrating the most popular an
   - Security-conscious configuration handling
   - Cross-platform support
 
+### Authentication & Security
+- **[JWT](./JWT/)** - JSON Web Token implementation
+  - Token creation and validation
+  - HMAC and RSA signing methods
+  - Custom claims and expiration handling
+  - Refresh token patterns
+  - Security best practices
+
 ### Data Processing
 - **[MapStructure](./MapStructure/)** - Map to struct conversion
   - JSON to struct mapping
@@ -100,6 +108,7 @@ go_libraries_examples/
 ├── GoDotEnv/                   # Environment variable management
 ├── GoQuery/                    # Web scraping example
 ├── Gorm/                       # ORM database example
+├── JWT/                        # JSON Web Token example
 ├── MapStructure/               # Data mapping example
 ├── TimeDemo/                   # Time package demonstration
 ├── greetings/                  # Custom package example
@@ -126,6 +135,9 @@ cd Cobra && go run main.go
 
 # Database operations
 cd Gorm && go run main.go
+
+# JSON Web Token authentication
+cd JWT && go run main.go
 
 # Environment variables
 cd GoDotEnv && go run main.go
@@ -169,11 +181,12 @@ go work sync
 2. **[greetings](./greetings/)** - Package creation
 3. **[TimeDemo](./TimeDemo/)** - Standard library usage
 4. **[GoDotEnv](./GoDotEnv/)** - Configuration management
-5. **[MapStructure](./MapStructure/)** - Data handling
-6. **[Gorm](./Gorm/)** - Database operations
-7. **[Gin](./Gin/)** - Web development
-8. **[GoQuery](./GoQuery/)** - Web scraping
-9. **[Cobra](./Cobra/)** - CLI applications
+5. **[JWT](./JWT/)** - Authentication and security
+6. **[MapStructure](./MapStructure/)** - Data handling
+7. **[Gorm](./Gorm/)** - Database operations
+8. **[Gin](./Gin/)** - Web development
+9. **[GoQuery](./GoQuery/)** - Web scraping
+10. **[Cobra](./Cobra/)** - CLI applications
 
 ## 🔧 Tools & Commands
 
@@ -213,7 +226,8 @@ Future additions may include:
 - **Viper** - Configuration management
 - **Logrus** - Structured logging
 - **Redis-Go** - Redis client
-- **JWT-Go** - JSON Web Token implementation
+- **Zap** - High-performance logging
+- **Gorilla/Mux** - HTTP router and URL matcher
 
 ---
 
