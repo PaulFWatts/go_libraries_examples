@@ -1,0 +1,284 @@
+package templates
+
+import "fmt"
+
+package templates
+
+import "fmt"
+
+templ HomePage() {
+	@Base("Templ Demo - Type-safe HTML Templates") {
+		<!-- Hero Section -->
+		<section class="hero-section">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<h1 class="display-4 fw-bold mb-4">
+							Welcome to Templ
+						</h1>
+						<p class="lead mb-4">
+							A language for writing HTML user interfaces in Go that compiles to type-safe Go code.
+							Experience the power of compile-time HTML validation and Go's type system.
+						</p>
+						<div class="d-flex gap-3">
+							<a href="/components" class="btn btn-light btn-lg">
+								View Components
+							</a>
+							<a href="/todo" class="btn btn-outline-light btn-lg">
+								Try Todo App
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="code-block bg-dark text-white p-4 rounded">
+							<pre><code class="language-go">// Define a template
+templ Greeting(name string) {
+  &lt;div class="greeting"&gt;
+    &lt;h1&gt;Hello, { name }!&lt;/h1&gt;
+    &lt;p&gt;Welcome to Templ&lt;/p&gt;
+  &lt;/div&gt;
+}
+
+// Use it in Go
+func handler(w http.ResponseWriter, r *http.Request) {
+  Greeting("World").Render(r.Context(), w)
+}</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Features Section -->
+		<section class="py-5">
+			<div class="container">
+				<div class="row text-center mb-5">
+					<div class="col-lg-12">
+						<h2 class="display-5 fw-bold">Why Choose Templ?</h2>
+						<p class="lead text-muted">Modern templating with Go's safety and performance</p>
+					</div>
+				</div>
+				<div class="row g-4">
+					@FeatureCard(
+						"🔒",
+						"Type Safety",
+						"Compile-time validation ensures your templates are always correct. No more runtime template errors.",
+					)
+					@FeatureCard(
+						"⚡",
+						"High Performance",
+						"Templates compile to efficient Go code. No parsing overhead at runtime.",
+					)
+					@FeatureCard(
+						"🧩",
+						"Component Based",
+						"Build reusable components with props, just like modern frontend frameworks.",
+					)
+					@FeatureCard(
+						"🛠️",
+						"Developer Experience",
+						"Great IDE support, hot reloading, and familiar syntax for Go developers.",
+					)
+					@FeatureCard(
+						"🔄",
+						"Reactive Updates",
+						"Easy integration with HTMX for dynamic, reactive user interfaces.",
+					)
+					@FeatureCard(
+						"📦",
+						"Zero Dependencies",
+						"Pure Go solution with minimal external dependencies.",
+					)
+				</div>
+			</div>
+		</section>
+	}
+}
+		<!-- Hero Section -->
+		<section class="hero-section">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<h1 class="display-4 fw-bold mb-4">
+							Welcome to Templ
+						</h1>
+						<p class="lead mb-4">
+							A language for writing HTML user interfaces in Go that compiles to type-safe Go code.
+							Experience the power of compile-time HTML validation and Go's type system.
+						</p>
+						<div class="d-flex gap-3">
+							<a href="/components" class="btn btn-light btn-lg">
+								View Components
+							</a>
+							<a href="/todo" class="btn btn-outline-light btn-lg">
+								Try Todo App
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="code-block bg-dark text-white p-4 rounded">
+							<pre><code class="language-go">// Define a template
+templ Greeting(name string) {
+  &lt;div class="greeting"&gt;
+    &lt;h1&gt;Hello, { name }!&lt;/h1&gt;
+    &lt;p&gt;Welcome to Templ&lt;/p&gt;
+  &lt;/div&gt;
+}
+
+// Use it in Go
+func handler(w http.ResponseWriter, r *http.Request) {
+  Greeting("World").Render(r.Context(), w)
+}</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section class="py-5">
+			<div class="container">
+				<div class="row text-center mb-5">
+					<div class="col-lg-12">
+						<h2 class="display-5 fw-bold">Why Choose Templ?</h2>
+						<p class="lead text-muted">Modern templating with Go's safety and performance</p>
+					</div>
+				</div>
+				<div class="row g-4">
+					@FeatureCard(
+						"🔒",
+						"Type Safety",
+						"Compile-time validation ensures your templates are always correct. No more runtime template errors.",
+					)
+					@FeatureCard(
+						"⚡",
+						"High Performance",
+						"Templates compile to efficient Go code. No parsing overhead at runtime.",
+					)
+					@FeatureCard(
+						"🧩",
+						"Component Based",
+						"Build reusable components with props, just like modern frontend frameworks.",
+					)
+					@FeatureCard(
+						"🛠️",
+						"Developer Experience",
+						"Great IDE support, hot reloading, and familiar syntax for Go developers.",
+					)
+					@FeatureCard(
+						"🔄",
+						"Reactive Updates",
+						"Easy integration with HTMX for dynamic, reactive user interfaces.",
+					)
+					@FeatureCard(
+						"📦",
+						"Zero Dependencies",
+						"Pure Go solution with minimal external dependencies.",
+					)
+				</div>
+			</div>
+		</section>
+
+		<!-- Code Examples Section -->
+		<section class="py-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center mb-5">
+						<h2 class="display-5 fw-bold">See It In Action</h2>
+						<p class="lead text-muted">Real examples from this demo application</p>
+					</div>
+				</div>
+				<div class="row g-4">
+					<div class="col-lg-6">
+						<h4>Template Definition</h4>
+						<div class="code-block">
+							<pre><code class="language-go">// Button component with variants
+templ Button(text string, variant string, onclick string) {
+  &lt;button 
+    class={ "btn", "btn-" + variant }
+    if onclick != "" {
+      onclick={ onclick }
+    }
+  &gt;
+    { text }
+  &lt;/button&gt;
+}</code></pre>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<h4>Usage in Go</h4>
+						<div class="code-block">
+							<pre><code class="language-go">// Use the component
+func handler(w http.ResponseWriter, r *http.Request) {
+  component := Button(
+    "Click Me", 
+    "primary", 
+    "alert('Hello!')"
+  )
+  component.Render(r.Context(), w)
+}</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Getting Started Section -->
+		<section class="py-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center mb-5">
+						<h2 class="display-5 fw-bold">Quick Start</h2>
+						<p class="lead text-muted">Get up and running with Templ in minutes</p>
+					</div>
+				</div>
+				<div class="row g-4">
+					<div class="col-lg-4">
+						<div class="text-center">
+							<div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+								<span class="h4 mb-0">1</span>
+							</div>
+							<h5>Install Templ</h5>
+							<div class="code-block">
+								<code>go install github.com/a-h/templ/cmd/templ@latest</code>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="text-center">
+							<div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+								<span class="h4 mb-0">2</span>
+							</div>
+							<h5>Create Template</h5>
+							<div class="code-block">
+								<code>// hello.templ<br/>templ Hello() {<br/>&nbsp;&nbsp;&lt;h1&gt;Hello World!&lt;/h1&gt;<br/>}</code>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="text-center">
+							<div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+								<span class="h4 mb-0">3</span>
+							</div>
+							<h5>Generate & Use</h5>
+							<div class="code-block">
+								<code>templ generate<br/>Hello().Render(ctx, w)</code>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	}
+}
+
+templ FeatureCard(icon, title, description string) {
+	<div class="col-lg-4">
+		<div class="card feature-card h-100 text-center p-4">
+			<div class="card-body">
+				<div class="display-4 mb-3">{ icon }</div>
+				<h5 class="card-title fw-bold">{ title }</h5>
+				<p class="card-text text-muted">{ description }</p>
+			</div>
+		</div>
+	</div>
+}

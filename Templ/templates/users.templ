@@ -1,0 +1,334 @@
+package templates
+
+import "fmt"
+
+templ UsersPage(users []User) {
+	@Base("Users - Templ Demo") {
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="d-flex justify-content-between align-items-center mb-4">
+						<h1 class="display-4">User Management</h1>
+						<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+							<i class="bi bi-person-plus"></i> Add User
+						</button>
+					</div>
+					
+					<!-- Users Statistics -->
+					@UserStats(users)
+					
+					<!-- Users Table -->
+					<div class="card shadow">
+						<div class="card-header bg-primary text-white">
+							<h5 class="mb-0">
+								<i class="bi bi-people"></i> All Users ({ fmt.Sprintf("%d", len(users)) })
+							</h5>
+						</div>
+						<div class="card-body p-0">
+							if len(users) == 0 {
+								<div class="text-center py-5">
+									<i class="bi bi-people display-1 text-muted"></i>
+									<h4 class="text-muted mt-3">No users found</h4>
+									<p class="text-muted">Add your first user to get started!</p>
+								</div>
+							} else {
+								@EnhancedUserTable(users)
+							}
+						</div>
+					</div>
+					
+					<!-- Add User Modal -->
+					@AddUserModal()
+					
+					<!-- Code Example Section -->
+					<div class="mt-5">
+						<h3>Template Implementation</h3>
+						<div class="code-block">
+							<h6>User Management with Templ:</h6>
+							<pre><code class="language-go">// User data structure
+type User struct {
+  ID    int    `json:"id"`
+  Name  string `json:"name"`
+  Email string `json:"email"`
+  Role  string `json:"role"`
+}
+
+// Users page template
+templ UsersPage(users []User) {
+  @Base("Users") {
+    @UserStats(users)
+    @EnhancedUserTable(users)
+    @AddUserModal()
+  }
+}
+
+// Individual user row with actions
+templ UserRow(user User) {
+  &lt;tr&gt;
+    &lt;td&gt;{ user.Name }&lt;/td&gt;
+    &lt;td&gt;{ user.Email }&lt;/td&gt;
+    &lt;td&gt;@RoleBadge(user.Role)&lt;/td&gt;
+    &lt;td&gt;@UserActions(user.ID)&lt;/td&gt;
+  &lt;/tr&gt;
+}</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+}
+
+templ UserStats(users []User) {
+	<div class="row mb-4">
+		<div class="col-md-3">
+			<div class="card text-center bg-primary text-white">
+				<div class="card-body">
+					<i class="bi bi-people-fill display-4"></i>
+					<h4 class="mt-2">{ fmt.Sprintf("%d", len(users)) }</h4>
+					<p class="mb-0">Total Users</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card text-center bg-danger text-white">
+				<div class="card-body">
+					<i class="bi bi-shield-fill display-4"></i>
+					<h4 class="mt-2">{ fmt.Sprintf("%d", countByRole(users, "Admin")) }</h4>
+					<p class="mb-0">Administrators</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card text-center bg-warning text-white">
+				<div class="card-body">
+					<i class="bi bi-pencil-fill display-4"></i>
+					<h4 class="mt-2">{ fmt.Sprintf("%d", countByRole(users, "Editor")) }</h4>
+					<p class="mb-0">Editors</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card text-center bg-info text-white">
+				<div class="card-body">
+					<i class="bi bi-person-fill display-4"></i>
+					<h4 class="mt-2">{ fmt.Sprintf("%d", countByRole(users, "User")) }</h4>
+					<p class="mb-0">Regular Users</p>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+templ EnhancedUserTable(users []User) {
+	<div class="table-responsive">
+		<table class="table table-hover mb-0">
+			<thead class="table-dark">
+				<tr>
+					<th>
+						<div class="d-flex align-items-center">
+							<i class="bi bi-person me-2"></i>Name
+						</div>
+					</th>
+					<th>
+						<div class="d-flex align-items-center">
+							<i class="bi bi-envelope me-2"></i>Email
+						</div>
+					</th>
+					<th>
+						<div class="d-flex align-items-center">
+							<i class="bi bi-shield me-2"></i>Role
+						</div>
+					</th>
+					<th>
+						<div class="d-flex align-items-center">
+							<i class="bi bi-gear me-2"></i>Actions
+						</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				for _, user := range users {
+					@EnhancedUserRow(user)
+				}
+			</tbody>
+		</table>
+	</div>
+}
+
+templ EnhancedUserRow(user User) {
+	<tr class="user-row" data-user-id={ fmt.Sprintf("%d", user.ID) }>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+					 style="width: 40px; height: 40px;">
+					{ string(user.Name[0]) }
+				</div>
+				<div>
+					<div class="fw-bold">{ user.Name }</div>
+					<small class="text-muted">ID: { fmt.Sprintf("%d", user.ID) }</small>
+				</div>
+			</div>
+		</td>
+		<td>
+			<a href={ templ.SafeURL("mailto:" + user.Email) } class="text-decoration-none">
+				{ user.Email }
+			</a>
+		</td>
+		<td>
+			@RoleBadge(user.Role)
+		</td>
+		<td>
+			@UserActions(user.ID)
+		</td>
+	</tr>
+}
+
+templ RoleBadge(role string) {
+	<span class={ "badge fs-6", getRoleBadgeClass(role) }>
+		<i class={ getRoleIcon(role) }></i>
+		{ role }
+	</span>
+}
+
+templ UserActions(userID int) {
+	<div class="btn-group btn-group-sm">
+		<button class="btn btn-outline-primary" 
+				onclick={ fmt.Sprintf("viewUser(%d)", userID) }
+				title="View Details">
+			<i class="bi bi-eye"></i>
+		</button>
+		<button class="btn btn-outline-secondary" 
+				onclick={ fmt.Sprintf("editUser(%d)", userID) }
+				title="Edit User">
+			<i class="bi bi-pencil"></i>
+		</button>
+		<button class="btn btn-outline-danger" 
+				onclick={ fmt.Sprintf("deleteUser(%d)", userID) }
+				title="Delete User">
+			<i class="bi bi-trash"></i>
+		</button>
+	</div>
+}
+
+templ AddUserModal() {
+	<div class="modal fade" id="addUserModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<i class="bi bi-person-plus"></i> Add New User
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<form action="/users" method="post">
+					<div class="modal-body">
+						<div class="mb-3">
+							<label for="userName" class="form-label">Full Name</label>
+							<input type="text" class="form-control" id="userName" name="name" required/>
+						</div>
+						<div class="mb-3">
+							<label for="userEmail" class="form-label">Email Address</label>
+							<input type="email" class="form-control" id="userEmail" name="email" required/>
+						</div>
+						<div class="mb-3">
+							<label for="userRole" class="form-label">Role</label>
+							<select class="form-select" id="userRole" name="role" required>
+								<option value="">Select a role...</option>
+								<option value="User">User</option>
+								<option value="Editor">Editor</option>
+								<option value="Admin">Administrator</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">
+							<i class="bi bi-person-plus"></i> Add User
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+}
+
+// Helper functions
+func countByRole(users []User, role string) int {
+	count := 0
+	for _, user := range users {
+		if user.Role == role {
+			count++
+		}
+	}
+	return count
+}
+
+func getRoleBadgeClass(role string) string {
+	switch role {
+	case "Admin":
+		return "bg-danger"
+	case "Editor":
+		return "bg-warning text-dark"
+	case "User":
+		return "bg-primary"
+	default:
+		return "bg-secondary"
+	}
+}
+
+func getRoleIcon(role string) string {
+	switch role {
+	case "Admin":
+		return "bi bi-shield-fill me-1"
+	case "Editor":
+		return "bi bi-pencil-fill me-1"
+	case "User":
+		return "bi bi-person-fill me-1"
+	default:
+		return "bi bi-question-circle-fill me-1"
+	}
+}
+
+script UserManagementScript() {
+	function viewUser(id) {
+		// Simulate user details view
+		alert(`Viewing user details for ID: ${id}`);
+	}
+	
+	function editUser(id) {
+		// Simulate user editing
+		const newName = prompt(`Edit user name for ID ${id}:`);
+		if (newName && newName.trim()) {
+			fetch(`/users/${id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ name: newName.trim() }),
+			}).then(() => {
+				location.reload();
+			});
+		}
+	}
+	
+	function deleteUser(id) {
+		if (confirm(`Are you sure you want to delete user ID ${id}?`)) {
+			fetch(`/users/${id}`, {
+				method: 'DELETE',
+			}).then(() => {
+				location.reload();
+			});
+		}
+	}
+	
+	// Add hover effects
+	document.querySelectorAll('.user-row').forEach(row => {
+		row.addEventListener('mouseenter', function() {
+			this.style.backgroundColor = '#f8f9fa';
+		});
+		row.addEventListener('mouseleave', function() {
+			this.style.backgroundColor = '';
+		});
+	});
+}

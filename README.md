@@ -13,6 +13,14 @@ A comprehensive collection of working examples demonstrating the most popular an
 ## 🛠️ Libraries Included
 
 ### Web Development
+- **[Templ](./Templ/)** - Type-safe HTML templates
+  - Compile-time HTML validation and type checking
+  - Zero-overhead template compilation to Go functions
+  - Component-based architecture with props and composition
+  - IDE support with syntax highlighting and refactoring
+  - Modern web development patterns with Bootstrap integration
+  - Working Todo application with CRUD operations
+
 - **[Echo](./Echo/)** - High-performance, minimalist web framework
   - Zero memory allocation HTTP router
   - Rich middleware ecosystem
