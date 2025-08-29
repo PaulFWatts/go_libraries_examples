@@ -536,7 +536,7 @@ func watchConfiguration() {
 	viper.WatchConfig()
 	viper.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Printf("🔔 Config file changed: %s\n", e.Name)
-		
+
 		// Reload configuration
 		oldConfig := config
 		if err := viper.Unmarshal(&config); err != nil {
@@ -780,12 +780,12 @@ func environmentDemo() {
 
 	// Show current values and their environment variable names
 	fmt.Println("🔧 Configuration Values and Environment Overrides:")
-	
+
 	configMappings := []struct {
-		key       string
-		envVar    string
-		value     interface{}
-		example   string
+		key     string
+		envVar  string
+		value   interface{}
+		example string
 	}{
 		{"server.host", "SERVER_HOST", viper.Get("server.host"), "localhost"},
 		{"server.port", "SERVER_PORT", viper.Get("server.port"), "9090"},

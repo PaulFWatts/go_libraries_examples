@@ -265,7 +265,6 @@ This project is intended for educational purposes. Please refer to individual li
 
 Future additions may include:
 - **Fiber** - Express-inspired web framework
-- **Viper** - Configuration management
 - **Logrus** - Structured logging
 - **Redis-Go** - Redis client
 - **Zap** - High-performance logging
