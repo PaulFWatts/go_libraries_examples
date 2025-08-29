@@ -134,7 +134,7 @@ func registerRoutes(router *httprouter.Router) {
 	// Special routes demonstrating httprouter features
 	router.GET("/api/wildcard/*filepath", wildcardHandler)
 	router.GET("/api/params/:category/:subcategory/:id", multiParamHandler)
-	
+
 	// Health check
 	router.GET("/health", healthCheck)
 
@@ -152,7 +152,7 @@ func registerRoutes(router *httprouter.Router) {
 func displayEndpoints() {
 	fmt.Println("📡 Available Endpoints:")
 	fmt.Println("=====================")
-	
+
 	endpoints := []struct {
 		method string
 		path   string
@@ -204,10 +204,10 @@ func home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		"version":     "1.0.0",
 		"server_time": time.Now().Format(time.RFC3339),
 		"endpoints": map[string]string{
-			"api_info":  "/api",
-			"users":     "/api/users",
-			"products":  "/api/products",
-			"health":    "/health",
+			"api_info": "/api",
+			"users":    "/api/users",
+			"products": "/api/products",
+			"health":   "/health",
 		},
 	}
 	json.NewEncoder(w).Encode(response)
@@ -267,7 +267,7 @@ func getUsers(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func getUserByID(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	idStr := ps.ByName("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -293,7 +293,7 @@ func getUserByID(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func createUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	var newUser User
 	if err := json.NewDecoder(r.Body).Decode(&newUser); err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -313,7 +313,7 @@ func createUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func updateUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	idStr := ps.ByName("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -350,7 +350,7 @@ func updateUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func deleteUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	idStr := ps.ByName("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -391,7 +391,7 @@ func getProducts(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func getProductByID(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	idStr := ps.ByName("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -417,10 +417,10 @@ func getProductByID(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 
 func getProductsByCategory(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	category := ps.ByName("category")
 	var filteredProducts []Product
-	
+
 	for _, product := range products {
 		if product.Category == category {
 			filteredProducts = append(filteredProducts, product)
@@ -437,7 +437,7 @@ func getProductsByCategory(w http.ResponseWriter, r *http.Request, ps httprouter
 
 func createProduct(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	var newProduct Product
 	if err := json.NewDecoder(r.Body).Decode(&newProduct); err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -457,7 +457,7 @@ func createProduct(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 
 func updateProduct(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	idStr := ps.ByName("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -494,7 +494,7 @@ func updateProduct(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 
 func deleteProduct(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	idStr := ps.ByName("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -526,36 +526,36 @@ func deleteProduct(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 
 func searchUsers(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	query := ps.ByName("query")
 	var matchingUsers []User
-	
+
 	for _, user := range users {
-		if containsIgnoreCase(user.Name, query) || 
-		   containsIgnoreCase(user.Email, query) || 
-		   containsIgnoreCase(user.Username, query) {
+		if containsIgnoreCase(user.Name, query) ||
+			containsIgnoreCase(user.Email, query) ||
+			containsIgnoreCase(user.Username, query) {
 			matchingUsers = append(matchingUsers, user)
 		}
 	}
 
 	response := map[string]interface{}{
-		"query":   query,
-		"users":   matchingUsers,
-		"count":   len(matchingUsers),
+		"query": query,
+		"users": matchingUsers,
+		"count": len(matchingUsers),
 	}
 	json.NewEncoder(w).Encode(response)
 }
 
 func searchProducts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	query := ps.ByName("query")
 	var matchingProducts []Product
-	
+
 	for _, product := range products {
-		if containsIgnoreCase(product.Name, query) || 
-		   containsIgnoreCase(product.Description, query) || 
-		   containsIgnoreCase(product.Category, query) {
+		if containsIgnoreCase(product.Name, query) ||
+			containsIgnoreCase(product.Description, query) ||
+			containsIgnoreCase(product.Category, query) {
 			matchingProducts = append(matchingProducts, product)
 		}
 	}
@@ -572,7 +572,7 @@ func searchProducts(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 
 func wildcardHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	filepath := ps.ByName("filepath")
 	response := map[string]interface{}{
 		"message":  "Wildcard route demonstration",
@@ -585,11 +585,11 @@ func wildcardHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Param
 
 func multiParamHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	category := ps.ByName("category")
 	subcategory := ps.ByName("subcategory")
 	id := ps.ByName("id")
-	
+
 	response := map[string]interface{}{
 		"message":     "Multiple parameters demonstration",
 		"category":    category,
@@ -620,22 +620,22 @@ func panicHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 func withLogging(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		start := time.Now()
-		
+
 		// Log the request
-		fmt.Printf("🔍 [%s] %s %s - Started\n", 
-			time.Now().Format("15:04:05"), 
-			r.Method, 
+		fmt.Printf("🔍 [%s] %s %s - Started\n",
+			time.Now().Format("15:04:05"),
+			r.Method,
 			r.URL.Path)
-		
+
 		// Call the next handler
 		next(w, r, ps)
-		
+
 		// Log the completion
 		duration := time.Since(start)
-		fmt.Printf("✅ [%s] %s %s - Completed in %v\n", 
-			time.Now().Format("15:04:05"), 
-			r.Method, 
-			r.URL.Path, 
+		fmt.Printf("✅ [%s] %s %s - Completed in %v\n",
+			time.Now().Format("15:04:05"),
+			r.Method,
+			r.URL.Path,
 			duration)
 	}
 }
@@ -645,7 +645,7 @@ func withLogging(next httprouter.Handle) httprouter.Handle {
 func containsIgnoreCase(str, substr string) bool {
 	str = fmt.Sprintf("%s", str)
 	substr = fmt.Sprintf("%s", substr)
-	
+
 	// Simple case-insensitive contains check
 	for i := 0; i <= len(str)-len(substr); i++ {
 		match := true
