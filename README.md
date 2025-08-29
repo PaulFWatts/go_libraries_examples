@@ -13,6 +13,13 @@ A comprehensive collection of working examples demonstrating the most popular an
 ## 🛠️ Libraries Included
 
 ### Web Development
+- **[Echo](./Echo/)** - High-performance, minimalist web framework
+  - Zero memory allocation HTTP router
+  - Rich middleware ecosystem
+  - JSON binding and validation
+  - WebSocket and Server-Sent Events support
+  - Template rendering and static file serving
+
 - **[Gin](./Gin/)** - High-performance HTTP web framework
   - REST API endpoints
   - JSON responses
@@ -118,6 +125,7 @@ go_libraries_examples/
 ├── test.db                     # SQLite database for examples
 │
 ├── Cobra/                      # CLI framework example
+├── Echo/                       # Minimalist web framework example
 ├── Gin/                        # Web framework example
 ├── GoDotEnv/                   # Environment variable management
 ├── GoQuery/                    # Web scraping example
@@ -145,6 +153,9 @@ Each library example is self-contained and can be run independently:
 ```bash
 # Web server example
 cd Gin && go run main.go
+
+# Minimalist web framework
+cd Echo && go run main.go
 
 # High-performance HTTP router
 cd HTTPRouter && go run main.go
@@ -207,10 +218,11 @@ go work sync
 6. **[JWT](./JWT/)** - Authentication and security
 7. **[MapStructure](./MapStructure/)** - Data handling
 8. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
-9. **[Gorm](./Gorm/)** - Database operations
-10. **[Gin](./Gin/)** - Web development
-11. **[GoQuery](./GoQuery/)** - Web scraping
-12. **[Cobra](./Cobra/)** - CLI applications
+9. **[Echo](./Echo/)** - Minimalist web framework development
+10. **[Gorm](./Gorm/)** - Database operations
+11. **[Gin](./Gin/)** - Full-featured web development
+12. **[GoQuery](./GoQuery/)** - Web scraping
+13. **[Cobra](./Cobra/)** - CLI applications
 
 ## 🔧 Tools & Commands
 
@@ -245,7 +257,6 @@ This project is intended for educational purposes. Please refer to individual li
 
 Future additions may include:
 - **Fiber** - Express-inspired web framework
-- **Echo** - Minimalist web framework
 - **Viper** - Configuration management
 - **Logrus** - Structured logging
 - **Redis-Go** - Redis client
