@@ -1,6 +1,20 @@
 # Go Libraries Examples 🚀
 
-A comprehensive collection of working examples demonstrating the most popular and essential Go libraries. This repository serves as a practical reference for developers looking to implement common functionality using well-established Go packages.
+A comprehensive collection of working examples demonstrating the most popular and essential Go libraries. This repository serves as a practical reference for developers looking to implement common functiona1. **[hello](./hello/)** - Basic Go syntax and concepts
+2. **[greetings](./greetings/)** - Package creation and imports
+3. **[TimeDemo](./TimeDemo/)** - Standard library usage
+4. **[Testify](./Testify/)** - Testing and quality assurance
+5. **[GoDotEnv](./GoDotEnv/)** - Environment configuration basics
+6. **[Viper](./Viper/)** - Advanced configuration management
+7. **[JWT](./JWT/)** - Authentication and security
+8. **[MapStructure](./MapStructure/)** - Data handling
+9. **[HTTPRouter](./HTTPRouter/)** - High-performance HTTP routing
+10. **[Templ](./Templ/)** - Type-safe HTML template development
+11. **[Echo](./Echo/)** - Minimalist web framework development
+12. **[Gorm](./Gorm/)** - Database operations
+13. **[Gin](./Gin/)** - Full-featured web development
+14. **[GoQuery](./GoQuery/)** - Web scraping
+15. **[Cobra](./Cobra/)** - CLI applicationsll-established Go packages.
 
 ## 📋 Table of Contents
 
@@ -105,6 +119,34 @@ A comprehensive collection of working examples demonstrating the most popular an
 - **[hello](./hello/)** - Simple "Hello World" example
 - **[greetings](./greetings/)** - Custom package creation and usage
 
+## 🌟 Featured Comprehensive Demonstrations
+
+The following examples showcase production-ready implementations with extensive features:
+
+### 🎯 **[Templ](./Templ/)** - Type-Safe HTML Templates
+- **Live Demo**: Full web server with Todo application
+- **Features**: Component architecture, Bootstrap UI, CRUD operations
+- **Innovation**: Compile-time HTML validation, zero-overhead templates
+- **Best For**: Modern web applications with type safety
+
+### ⚙️ **[Viper](./Viper/)** - Configuration Management
+- **Live Demo**: Multi-format config CLI with hot-reloading
+- **Features**: YAML/JSON/TOML support, environment overrides, validation
+- **Innovation**: Configuration precedence, live watching, enterprise patterns
+- **Best For**: Complex applications requiring flexible configuration
+
+### 🚀 **[Echo](./Echo/)** - Web Framework
+- **Live Demo**: REST API with interactive documentation
+- **Features**: Middleware chain, route grouping, JSON handling
+- **Innovation**: Zero-allocation router, WebSocket support
+- **Best For**: High-performance web services
+
+### 🧪 **[Testify](./Testify/)** - Testing Framework
+- **Live Demo**: Comprehensive test suite with mocks
+- **Features**: 60+ assertions, mock expectations, benchmarks
+- **Innovation**: Real-world testing patterns, coverage analysis
+- **Best For**: Professional testing and quality assurance
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -149,8 +191,10 @@ go_libraries_examples/
 ├── HTTPRouter/                 # High-performance HTTP router
 ├── JWT/                        # JSON Web Token example
 ├── MapStructure/               # Data mapping example
+├── Templ/                      # Type-safe HTML templates
 ├── Testify/                    # Testing framework example
 ├── TimeDemo/                   # Time package demonstration
+├── Viper/                      # Configuration management
 ├── greetings/                  # Custom package example
 └── hello/                      # Basic Go example
 ```
@@ -173,6 +217,9 @@ cd Gin && go run main.go
 # Minimalist web framework
 cd Echo && go run main.go
 
+# Type-safe HTML templates with Todo app
+cd Templ && go run main.go
+
 # High-performance HTTP router
 cd HTTPRouter && go run main.go
 
@@ -187,6 +234,9 @@ cd JWT && go run main.go
 
 # Environment variables
 cd GoDotEnv && go run main.go
+
+# Configuration management
+cd Viper && go run main.go --help
 
 # Web scraping
 cd GoQuery && go run main.go
